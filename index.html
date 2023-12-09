@@ -5,27 +5,46 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- 1 引用React -->
-    <script
-      crossorigin
-      src="https://unpkg.com/react@16/umd/react.development.js"
-    ></script>
-    <script
-      crossorigin
-      src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"
-    ></script>
+    <link
+      rel="stylesheet"
+      href="./index.css
+    "
+    />
 
-    <!-- 2 引用babel转化React-->
-    <script src="https://cdn.bootcss.com/babel-standalone/6.26.0/babel.min.js"></script>
+    <!--引入 element-ui 的样式，-->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/element-ui/lib/theme-chalk/index.css"
+    />
+    <!-- 必须先引入vue，  后使用element-ui -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <!-- 引入element 的组件库-->
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <script src="https://unpkg.com/vue@2/dist/vue.js"></script>
+    <!-- import JavaScript -->
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
 
-    <!-- 4 引用antd-->
-    <script src="https://unpkg.com/antd@3.9.3/dist/antd.min.js"></script>
-    <link rel="https://unpkg.com/antd@3.9.3/dist/antd.min.css" />
     <title>Shop</title>
-    <script type="module" crossorigin src="/assets/index--b0ZdmrZ.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-4sK4E3Wk.css">
   </head>
+
   <body>
-    <div id="root"></div>
+    <div id="app" class="app">
+      <el-container>
+        <el-header>Header</el-header>
+        <el-main>Main</el-main>
+        <el-footer>Footer</el-footer>
+      </el-container>
+    </div>
   </body>
+
+  <script>
+    new Vue({
+      el: "#app",
+      data: function () {
+        return { visible: false };
+      },
+    });
+  </script>
+
+  <style></style>
 </html>
