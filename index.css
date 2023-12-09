@@ -1,0 +1,148 @@
+html {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.app {
+  background-color: #fff;
+}
+
+body .el-container {
+  display: flex;
+  flex-direction: column;
+}
+
+/* header */
+
+.app .el-header {
+  padding: 15px 30px;
+  position: sticky;
+  top: 0;
+  background-color: #fff;
+  color: #1989fa;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #dcdfe6;
+  z-index: 1000;
+}
+
+.el-header .header-logo-area {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.el-header .header-logo-area .logo-img {
+  font-size: 30px;
+  margin-right: 10px;
+}
+
+.el-header .header-logo-area .logo-text {
+  font-size: 20px;
+}
+
+.header-info-area {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.header-info-area .contact-info-popover {
+}
+
+.el-descriptions-item__label {
+  color: #909399;
+}
+
+.el-descriptions-item__content {
+  /* font-weight: 500; */
+}
+
+.header-info-area .contact-icon {
+  font-size: 25px;
+  cursor: pointer;
+}
+
+/* main */
+
+.app .el-main {
+  padding: 15px 30px;
+}
+
+.el-main .main-carousel-wrapper {
+}
+
+.main-carousel-wrapper h3 {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.el-carousel__item img {
+  width: 100%;
+}
+
+.el-carousel__item:nth-child(2n) {
+  background-color: #99a9bf;
+}
+
+.el-carousel__item:nth-child(2n + 1) {
+  background-color: #d3dce6;
+}
+
+.el-main .main-title {
+  text-align: center;
+}
+
+.el-main .detail-area .el-col {
+  padding: 0 10px;
+}
+
+.el-main .detail-area .el-card__body {
+  overflow: hidden;
+}
+
+.el-main .detail-area .el-card__body .img-wrapper {
+  height: 296px;
+  overflow: hidden;
+}
+.el-main .detail-area .el-card__body img {
+  width: 100%;
+}
+
+.el-main .detail-area .commodity-info-name {
+  font-weight: 500;
+}
+
+.el-main .detail-area .bottom {
+  margin-top: 6px;
+}
+
+.el-main .public-area {
+  margin-top: 30px;
+  height: 650px;
+  color: #fff;
+  background-size: cover;
+  background-image: url("https://framerusercontent.com/images/qpqHouNFtP4ORjI6PZAplcRj220.png");
+}
+
+.public-area .content-text-area {
+  padding-top: 400px;
+  padding-left: 30px;
+}
+
+.public-area .hint-text {
+  width: 300px;
+  /* font-size: 12px; */
+}
+/* footer */
+
+.app .el-footer {
+  background-color: #b3c0d1;
+  color: #333;
+  text-align: center;
+  height: 80px;
+}
