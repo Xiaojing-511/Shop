@@ -2,14 +2,18 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="https://storage.hokdo.com/2023/12/10/1702185267232-78805a221a988e79ef3f42d7c5bfd418.png"
+    />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link
+    <!-- <link
       rel="stylesheet"
       href="./index.css
     "
-    />
+    /> -->
 
     <!--引入 element-ui 的样式，-->
     <link
@@ -24,7 +28,7 @@
     <!-- import JavaScript -->
     <script src="https://unpkg.com/element-ui/lib/index.js"></script>
 
-    <title>Shop</title>
+    <title>Feihan Shop</title>
   </head>
 
   <body>
@@ -33,23 +37,23 @@
         <el-header>
           <div class="header-logo-area">
             <i class="el-icon-shopping-bag-2 logo-img"></i>
-            <span class="logo-text">Shop</span>
+            <span class="logo-text">Feihan Shop</span>
           </div>
 
           <div class="header-info-area">
             <i class="el-icon-question contact-icon"></i>
 
-            <el-popover placement="bottom" width="200" trigger="click">
+            <el-popover placement="bottom" width="220" trigger="click">
               <div class="contact-info-popover">
                 <el-descriptions title="Contact Us" column="1">
                   <el-descriptions-item label="Email"
-                    >xxx@163.com</el-descriptions-item
-                  >
+                    >{{info.email}}
+                  </el-descriptions-item>
                   <el-descriptions-item label="Phone"
-                    >18100000000</el-descriptions-item
-                  >
+                    >{{info.phone}}
+                  </el-descriptions-item>
                   <el-descriptions-item label="Address"
-                    >Beijing</el-descriptions-item
+                    >{{info.address}}</el-descriptions-item
                   >
                 </el-descriptions>
               </div>
@@ -281,7 +285,31 @@
           </div>
         </el-main>
 
-        <el-footer>Footer</el-footer>
+        <el-footer style="height: 220px">
+          <div class="footer-detail-area">
+            <div>
+              <h4 style="">Shop</h4>
+              <p>Man</p>
+              <p>Women</p>
+              <p>Accessories</p>
+            </div>
+            <p style="line-height: 28px">
+              FeiHan Shop is a lifestyle clothing brand with a customer-centric
+              approach. Our products are crafted with utmost attention to
+              quality, from inception to completion.
+            </p>
+          </div>
+          <div class="footer-right">
+            <span>© 2023 FeiHan Shop Apparel.</span>
+            <div class="icon-box">
+              <i class="el-icon-phone ele-icon" @click="copyText('phone')"></i>
+              <i
+                class="el-icon-s-home ele-icon"
+                @click="copyText('address')"
+              ></i>
+            </div>
+          </div>
+        </el-footer>
       </el-container>
     </div>
   </body>
@@ -290,7 +318,51 @@
     new Vue({
       el: "#app",
       data: function () {
-        return { visible: false };
+        return {
+          visible: false,
+          info: {
+            email: "527760459@QQ.com",
+            phone: "0086 17366538462",
+            address: "haidianzhongjie No.16 B1209 Beijing China",
+          },
+        };
+      },
+      methods: {
+        copyText(type) {
+          const text = this.$data.info[type];
+          console.log("this.$data", this.$data.info.phone, text);
+          //创建临时的输入框元素
+          const createElement = (text) => {
+            var isRTL = document.documentElement.getAttribute("dir") === "rtl";
+            var element = document.createElement("textarea");
+            // 防止在ios中产生缩放效果
+            element.style.fontSize = "12pt";
+            // 重置盒模型
+            element.style.border = "0";
+            element.style.padding = "0";
+            element.style.margin = "0";
+            // 将元素移到屏幕外
+            element.style.position = "absolute";
+            element.style[isRTL ? "right" : "left"] = "-9999px";
+            // 移动元素到页面底部
+            let yPosition =
+              window.pageYOffset || document.documentElement.scrollTop;
+            element.style.top = `${yPosition}px`;
+            //设置元素只读
+            element.setAttribute("readonly", "");
+            element.value = text;
+            document.body.appendChild(element);
+            return element;
+          };
+
+          var element = createElement(text);
+          console.log("element", element);
+          element.select();
+          element.setSelectionRange(0, element.value.length);
+          document.execCommand("copy");
+          element.remove();
+          this.$message(`The ${type} was copied to the clipboard`);
+        },
       },
     });
   </script>
@@ -355,6 +427,7 @@
 
     .el-descriptions-item__label {
       color: #909399;
+      /* width: 60px; */
     }
 
     .el-descriptions-item__content {
@@ -439,10 +512,41 @@
     /* footer */
 
     .app .el-footer {
-      background-color: #b3c0d1;
-      color: #333;
-      text-align: center;
-      height: 80px;
+      border-top: 1px solid #dcdfe6;
+      padding: 0 30px;
+      color: #5e6d82;
+    }
+
+    .el-footer .footer-detail-area {
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
+    }
+    .footer-detail-area p {
+      width: 400px;
+    }
+
+    .el-footer .footer-right {
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
+    }
+
+    .el-footer .footer-right .icon-box {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: #1989fa;
+      font-size: 25px;
+    }
+
+    .icon-box .ele-icon {
+      cursor: pointer;
+      opacity: 0.7;
+    }
+    .icon-box .ele-icon:hover {
+      opacity: 1;
     }
   </style>
 </html>
